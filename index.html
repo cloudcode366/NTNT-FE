@@ -32,14 +32,14 @@
         body {
             background-image: url('./brochure.jpg');
             /* Thay 'your-image.jpg' bằng đường dẫn ảnh của bạn */
-            background-size: cover;
-            /* Đảm bảo ảnh phủ toàn bộ màn hình */
-            background-position: center;
-            /* Căn giữa ảnh */
+            background-size: 100% auto;
+            /* Chiều rộng 100%, chiều cao tự động */
+            background-position: top center;
+            /* Căn ảnh theo chiều ngang */
             background-repeat: no-repeat;
-            /* Không lặp lại ảnh */
-            height: 100vh;
-            /* Chiều cao bằng 100% màn hình */
+            /* Không lặp lại */
+            background-attachment: scroll;
+            /* Cho phép cuộn */
             margin: 0;
             padding: 0;
         }

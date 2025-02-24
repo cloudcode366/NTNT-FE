@@ -4,109 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brochure với Hiệu ứng Lơ Lửng, Pop-up, Cuộn, và Placeholder Scale Theo Ảnh</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            min-height: 100vh; /* Đảm bảo chiều cao tối thiểu, cho phép cuộn */
-            background-image: url('./q6hN7WqC.jpeg'); /* Thay bằng đường dẫn ảnh của bạn */
-            background-size: contain; /* Giữ tỷ lệ ảnh, scale theo chiều rộng viewport */
-            background-position: top center;
-            background-repeat: no-repeat;
-            background-attachment: scroll;
-            overflow-x: hidden; /* Ẩn cuộn ngang nếu không cần */
-            scroll-behavior: smooth; /* Cuộn mượt */
-        }
-
-        .container {
-            max-width: 800px; /* Giới hạn chiều rộng nội dung */
-            margin: 0 auto; /* Căn giữa nội dung */
-            padding: 20px; /* Khoảng cách từ lề */
-        }
-
-        .floating-element {
-            position: relative;
-            animation: float 2s ease-in-out infinite;
-            cursor: pointer;
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px); /* Di chuyển lên 10px, có thể điều chỉnh */
-            }
-        }
-
-        .event-item {
-            padding: 10px 20px;
-            background-color: #ff69b4; /* Màu hồng giống brochure */
-            border-radius: 10px;
-            margin: 10px;
-            text-align: center;
-            color: white;
-            font-size: 16px;
-        }
-
-        .event-item:active {
-            animation: pop 0.3s ease-out;
-        }
-
-        @keyframes pop {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.1); /* Phóng to nhẹ */
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        #popup {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: white;
-            padding: 20px;
-            border: 2px solid #ff69b4;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.5);
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-            max-width: 400px;
-            max-height: 80vh;
-            overflow-y: auto; /* Cho phép cuộn dọc nếu nội dung vượt quá */
-        }
-
-        #popup.active {
-            opacity: 1;
-            visibility: visible;
-            transform: translate(-50%, -50%) scale(1);
-        }
-
-        #popup.inactive {
-            opacity: 0;
-            visibility: hidden;
-            transform: translate(-50%, -50%) scale(0.9);
-        }
-
-        /* Phần tử placeholder với chiều cao scale theo ảnh */
-        .scroll-placeholder {
-            width: 100%; /* Chiều rộng bằng chiều rộng viewport */
-            opacity: 0; /* Ẩn phần tử nhưng vẫn giữ chiều cao */
-            pointer-events: none; /* Ngăn chặn tương tác với phần tử */
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css"> <!-- Liên kết file CSS -->
 </head>
 <body>
     <div class="container">
         <h2>Workshop "Trẻ Truyền Trẻ"</h2>
-        <div class="floating-element event-item" onclick="showPopup()">Âm sắc cổ</div>
+        <img src="./apps-arduino.ico" class="floating-element event-item" alt="Âm sắc cổ" onclick="showPopup()"> <!-- Thay đường dẫn ảnh của bạn -->
         <!-- Phần tử placeholder để kích hoạt cuộn, chiều cao sẽ được JavaScript điều chỉnh -->
         <div class="scroll-placeholder"></div>
     </div>
@@ -116,44 +19,7 @@
         <p>Đây là hoạt động Âm sắc cổ trong workshop "Trẻ Truyền Trẻ". Tham gia để trải nghiệm âm nhạc truyền thống Việt Nam! Đây là hoạt động Âm sắc cổ trong workshop "Trẻ Truyền Trẻ". Tham gia để trải nghiệm âm nhạc truyền thống Việt Nam! Đây là hoạt động Âm sắc cổ trong workshop "Trẻ Truyền Trẻ". Tham gia để trải nghiệm âm nhạc truyền thống Việt Nam! Đây là hoạt động Âm sắc cổ trong workshop "Trẻ Truyền Trẻ". Tham gia để trải nghiệm âm nhạc truyền thống Việt Nam! Đây là hoạt động Âm sắc cổ trong workshop "Trẻ Truyền Trẻ". Tham gia để trải nghiệm âm nhạc truyền thống Việt Nam!</p>
         <button onclick="closePopup()">Đóng</button>
     </div>
+
+    <script src="script.js"></script> <!-- Liên kết file JavaScript -->
 </body>
-<script>
-    // Hiệu ứng pop-up khi click
-    function showPopup() {
-        const popup = document.getElementById('popup');
-        popup.classList.remove('inactive');
-        popup.classList.add('active');
-    }
-
-    function closePopup() {
-        const popup = document.getElementById('popup');
-        popup.classList.remove('active');
-        popup.classList.add('inactive');
-        setTimeout(() => {
-            popup.classList.remove('inactive');
-        }, 500);
-    }
-
-    // Tính toán và điều chỉnh chiều cao của .scroll-placeholder dựa trên tỷ lệ ảnh 1080x4000
-    window.onload = function() {
-        function updatePlaceholderHeight() {
-            // Lấy chiều rộng của viewport
-            const viewportWidth = window.innerWidth;
-            // Tỷ lệ chiều cao/chiều rộng của ảnh (4000/1080)
-            const aspectRatio = 3500 / 1080; // Tỷ lệ chiều cao trên chiều rộng
-            // Tính chiều cao dựa trên chiều rộng viewport và tỷ lệ ảnh
-            const calculatedHeight = viewportWidth * aspectRatio;
-
-            // Đặt chiều cao của .scroll-placeholder
-            const placeholder = document.querySelector('.scroll-placeholder');
-            placeholder.style.height = `${calculatedHeight}px`;
-        }
-
-        // Gọi hàm khi trang tải
-        updatePlaceholderHeight();
-
-        // Cập nhật chiều cao khi resize window
-        window.addEventListener('resize', updatePlaceholderHeight);
-    };
-</script>
 </html>

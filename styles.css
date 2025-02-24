@@ -1,0 +1,96 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    min-height: 100vh; /* Đảm bảo chiều cao tối thiểu, cho phép cuộn */
+    background-image: url('./q6hN7WqC.jpeg'); /* Thay bằng đường dẫn ảnh của bạn */
+    background-size: contain; /* Giữ tỷ lệ ảnh, scale theo chiều rộng viewport */
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    overflow-x: hidden; /* Ẩn cuộn ngang nếu không cần */
+    scroll-behavior: smooth; /* Cuộn mượt */
+}
+
+.container {
+    max-width: 800px; /* Giới hạn chiều rộng nội dung */
+    margin: 0 auto; /* Căn giữa nội dung */
+    padding: 20px; /* Khoảng cách từ lề */
+}
+
+.floating-element {
+    position: relative;
+    animation: float 2s ease-in-out infinite;
+    cursor: pointer;
+}
+
+/* Điều chỉnh cho ảnh */
+.floating-element.event-item {
+    width: 50px; /* Kích thước mẫu, bạn có thể điều chỉnh */
+    height: auto; /* Giữ tỷ lệ ảnh */
+    object-fit: cover; /* Đảm bảo ảnh không bị méo */
+    top: 120%; /* Khoảng cách từ đỉnh (tính bằng pixel, %, hoặc vw/vh) */
+    left: 50px;
+
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px); /* Di chuyển lên 10px, có thể điều chỉnh */
+    }
+}
+
+.event-item:active {
+    animation: pop 0.3s ease-out;
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1); /* Phóng to nhẹ */
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+#popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 2px solid #ff69b4;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    max-width: 400px;
+    max-height: 80vh;
+    overflow-y: auto; /* Cho phép cuộn dọc nếu nội dung vượt quá */
+}
+
+#popup.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+#popup.inactive {
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, -50%) scale(0.9);
+}
+
+/* Phần tử placeholder với chiều cao scale theo ảnh */
+.scroll-placeholder {
+    width: 100%; /* Chiều rộng bằng chiều rộng viewport */
+    opacity: 0; /* Ẩn phần tử nhưng vẫn giữ chiều cao */
+    pointer-events: none; /* Ngăn chặn tương tác với phần tử */
+}

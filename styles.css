@@ -28,7 +28,7 @@ body {
     width: 50px; /* Kích thước mẫu, bạn có thể điều chỉnh */
     height: auto; /* Giữ tỷ lệ ảnh */
     object-fit: cover; /* Đảm bảo ảnh không bị méo */
-    top: 120%; /* Khoảng cách từ đỉnh (tính bằng pixel, %, hoặc vw/vh) */
+    top: 50vw; /* Khoảng cách từ đỉnh (tính bằng pixel, %, hoặc vw/vh) */
     left: 50px;
 
 }

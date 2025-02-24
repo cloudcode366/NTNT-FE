@@ -38,7 +38,7 @@ window.onload = function() {
         // Lấy chiều rộng của viewport
         const viewportWidth = window.innerWidth;
         // Tỷ lệ chiều cao/chiều rộng của ảnh (4000/1080)
-        const aspectRatio = 3500 / 1080; // Tỷ lệ chiều cao trên chiều rộng (đã chỉnh theo yêu cầu của bạn)
+        const aspectRatio = 4000 / 1080; // Tỷ lệ chiều cao trên chiều rộng (đã chỉnh theo yêu cầu của bạn)
         // Tính chiều cao dựa trên chiều rộng viewport và tỷ lệ ảnh
         const calculatedHeight = viewportWidth * aspectRatio;
 

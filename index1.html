@@ -1,0 +1,174 @@
+<!-- <!DOCTYPE html>
+<html lang="vi"> -->
+
+<!-- <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roadmap Zig-Zag</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            background-color: #f4f4f4;
+            border: 2px dashed gray;
+        }
+
+        /* #step {
+            width: 50px;
+            height: 50px;
+            background-image: url('./apps-arduino.ico');
+            background-size: cover;
+            position: absolute;
+        } */
+
+        body {
+            background-image: url('./brochure.jpg');
+            /* Thay 'your-image.jpg' bằng đường dẫn ảnh của bạn */
+            background-size: 100% auto;
+            /* Chiều rộng 100%, chiều cao tự động */
+            background-position: top center;
+            /* Căn ảnh theo chiều ngang */
+            background-repeat: no-repeat;
+            /* Không lặp lại */
+            background-attachment: scroll;
+            /* Cho phép cuộn */
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head> -->
+
+<!-- <body>
+
+     <h2>Workshop Roadmap (Zig-Zag)</h2>
+    <button onclick="startAnimation()">Chạy Roadmap</button>
+    <div class="container">
+        <svg width="600" height="400" viewBox="0 0 600 400">
+            <path id="roadPath" d="M 50 50 Q 200 300, 400 100 T 550 250" stroke="red" fill="transparent"
+                stroke-width="3" />
+        </svg>
+        <div id="step"></div>
+    </div>
+
+    <script>
+        gsap.registerPlugin(MotionPathPlugin);
+
+        // Đặt vị trí ban đầu ngay khi tải trang
+        gsap.set("#step", {
+            motionPath: {
+                path: "#roadPath",
+                align: "#roadPath",
+                alignOrigin: [0.5, 0.5],
+                start: 2
+            }
+        });
+
+        function startAnimation() {
+            gsap.to("#step", {
+                duration: 5,
+                motionPath: {
+                    path: "#roadPath",
+                    align: "#roadPath",
+                    alignOrigin: [0.5, 0.5],
+                    autoRotate: true
+                },
+                ease: "power1.inOut"
+            });
+        }
+    </script> 
+
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Element chạy theo bản đồ</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
+    <style>
+        body {
+            background-image: url('./brochure.jpg');
+            /* Thay 'your-image.jpg' bằng đường dẫn ảnh của bạn */
+            background-size: 100% auto;
+            /* Chiều rộng 100%, chiều cao tự động */
+            background-position: top center;
+            /* Căn ảnh theo chiều ngang */
+            background-repeat: no-repeat;
+            /* Không lặp lại */
+            background-attachment: scroll;
+            /* Cho phép cuộn */
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+        }
+
+        #step {
+            width: 50px;
+            height: 50px;
+            background-image: url('./apps-arduino.ico');
+            background-size: cover;
+            position: absolute;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <button onclick="startAnimation()">Chạy Roadmap</button>
+
+    <div class="container">
+        <svg viewBox="0 0 600 1200">
+            <path id="roadPath" d="M 50 50 Q 300 200, 400 500 T 550 900" stroke="red" fill="transparent" stroke-width="3"/>
+        </svg>
+        <!-- <div id="movingElement"></div> -->
+
+    </div>
+    <div id="step"></div>
+
+    <!-- <button onclick="startAnimation()">Chạy</button> -->
+
+    <script>
+        gsap.registerPlugin(MotionPathPlugin);
+
+        // Đặt vị trí ban đầu ngay khi tải trang
+        gsap.set("#step", {
+            motionPath: {
+                path: "#roadPath",
+                align: "#roadPath",
+                alignOrigin: [0.5, 0.5],
+                start: 2
+            }
+        });
+
+        function startAnimation() {
+            gsap.to("#step", {
+                duration: 5,
+                motionPath: {
+                    path: "#roadPath",
+                    align: "#roadPath",
+                    alignOrigin: [0.5, 0.5],
+                    autoRotate: true
+                },
+                ease: "power1.inOut"
+            });
+        }
+    </script> 
+</body>
+</html>

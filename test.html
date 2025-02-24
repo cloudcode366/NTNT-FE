@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brochure với Hiệu ứng Lơ Lửng, Pop-up, Cuộn, và Placeholder Scale Theo Ảnh</title>
+    <title>Brochure với Hiệu ứng Lơ Lửng, Pop-up, và Cuộn</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            min-height: 100vh; /* Đảm bảo chiều cao tối thiểu, cho phép cuộn */
+            /* min-height: 100vh; Đảm bảo chiều cao tối thiểu, cho phép cuộn */
             background-image: url('./q6hN7WqC.jpeg'); /* Thay bằng đường dẫn ảnh của bạn */
-            background-size: contain; /* Giữ tỷ lệ ảnh, scale theo chiều rộng viewport */
-            background-position: top center;
+            /* background-size: 100% auto; */
+            /* background-position: top center; */
             background-repeat: no-repeat;
             background-attachment: scroll;
-            overflow-x: hidden; /* Ẩn cuộn ngang nếu không cần */
-            scroll-behavior: smooth; /* Cuộn mượt */
+            /* overflow-x: hidden; Ẩn cuộn ngang nếu không cần */
+            /* scroll-behavior: smooth; Cuộn mượt */
         }
 
         .container {
@@ -94,21 +94,24 @@
             visibility: hidden;
             transform: translate(-50%, -50%) scale(0.9);
         }
-
-        /* Phần tử placeholder với chiều cao scale theo ảnh */
-        .scroll-placeholder {
-            width: 100%; /* Chiều rộng bằng chiều rộng viewport */
-            opacity: 0; /* Ẩn phần tử nhưng vẫn giữ chiều cao */
-            pointer-events: none; /* Ngăn chặn tương tác với phần tử */
-        }
     </style>
 </head>
 <body>
     <div class="container">
         <h2>Workshop "Trẻ Truyền Trẻ"</h2>
+        <!-- Thêm nhiều phần tử .event-item để đảm bảo nội dung đủ dài để cuộn -->
         <div class="floating-element event-item" onclick="showPopup()">Âm sắc cổ</div>
-        <!-- Phần tử placeholder để kích hoạt cuộn, chiều cao sẽ được JavaScript điều chỉnh -->
-        <div class="scroll-placeholder"></div>
+        <div class="floating-element event-item">Hoạt động Trải nghiệm Nhạc cụ Truyền thống 1</div>
+        <div class="floating-element event-item">Hoạt động Trải nghiệm Nhạc cụ Truyền thống 2</div>
+        <div class="floating-element event-item">Hoạt động Trải nghiệm Nhạc cụ Truyền thống 3</div>
+        <div class="floating-element event-item">Hoạt động Trải nghiệm Nhạc cụ Truyền thống 4</div>
+        <div class="floating-element event-item">Hoạt động Trải nghiệm Nhạc cụ Truyền thống 5</div>
+        <!-- Thêm thêm nội dung để kiểm tra cuộn -->
+        <div class="floating-element event-item">Hoạt động Trải nghiệm Nhạc cụ Truyền thống 6</div>
+        <div class="floating-element event-item">Hoạt động Trải nghiệm Nhạc cụ Truyền thống 7</div>
+        <div class="floating-element event-item">Hoạt động Trải nghiệm Nhạc cụ Truyền thống 8</div>
+        <div class="floating-element event-item">Hoạt động Trải nghiệm Nhạc cụ Truyền thống 9</div>
+        <div class="floating-element event-item">Hoạt động Trải nghiệm Nhạc cụ Truyền thống 10</div>
     </div>
 
     <div id="popup">
@@ -133,27 +136,5 @@
             popup.classList.remove('inactive');
         }, 500);
     }
-
-    // Tính toán và điều chỉnh chiều cao của .scroll-placeholder dựa trên tỷ lệ ảnh 1080x4000
-    window.onload = function() {
-        function updatePlaceholderHeight() {
-            // Lấy chiều rộng của viewport
-            const viewportWidth = window.innerWidth;
-            // Tỷ lệ chiều cao/chiều rộng của ảnh (4000/1080)
-            const aspectRatio = 3500 / 1080; // Tỷ lệ chiều cao trên chiều rộng
-            // Tính chiều cao dựa trên chiều rộng viewport và tỷ lệ ảnh
-            const calculatedHeight = viewportWidth * aspectRatio;
-
-            // Đặt chiều cao của .scroll-placeholder
-            const placeholder = document.querySelector('.scroll-placeholder');
-            placeholder.style.height = `${calculatedHeight}px`;
-        }
-
-        // Gọi hàm khi trang tải
-        updatePlaceholderHeight();
-
-        // Cập nhật chiều cao khi resize window
-        window.addEventListener('resize', updatePlaceholderHeight);
-    };
 </script>
 </html>

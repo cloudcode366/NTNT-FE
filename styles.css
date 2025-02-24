@@ -1,8 +1,22 @@
+@font-face {
+    font-family: 'PlusJakartaSans';
+    src: url('./fonts/PlusJakartaSans-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PlusJakartaSans';
+    src: url('./fonts/PlusJakartaSans-Italic-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: italic;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'PlusJakartaSans', sans-serif;
     margin: 0;
     min-height: 100vh; /* Đảm bảo chiều cao tối thiểu, cho phép cuộn */
-    background-image: url('./q6hN7WqC.jpeg'); /* Thay bằng đường dẫn ảnh của bạn */
+    background-image: url('./element/bc.jpg'); /* Thay bằng đường dẫn ảnh của bạn */
     background-size: contain; /* Giữ tỷ lệ ảnh, scale theo chiều rộng viewport */
     background-position: top center;
     background-repeat: no-repeat;
@@ -15,23 +29,82 @@ body {
     max-width: 800px; /* Giới hạn chiều rộng nội dung */
     margin: 0 auto; /* Căn giữa nội dung */
     padding: 20px; /* Khoảng cách từ lề */
+    position: relative; /* Để các phần tử con absolute có thể định vị tương đối */
 }
 
+/* Tiêu đề (h2) */
+h2 {
+    font-family: 'PlusJakartaSans', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    font-style: normal;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+/* Phần tử ảnh (6 phần tử với hiệu ứng lơ lửng và pop) */
 .floating-element {
     position: relative;
     animation: float 2s ease-in-out infinite;
     cursor: pointer;
 }
 
-/* Điều chỉnh cho ảnh */
+/* Điều chỉnh cho từng ảnh, làm responsive và định vị độc lập */
 .floating-element.event-item {
-    width: 50px; /* Kích thước mẫu, bạn có thể điều chỉnh */
-    height: auto; /* Giữ tỷ lệ ảnh */
-    object-fit: cover; /* Đảm bảo ảnh không bị méo */
-    top: 155vw; /* Khoảng cách từ đỉnh (tính bằng pixel, %, hoặc vw/vh) */
-    left: 7vw;
-
+    width: 80%;
+    height: auto;
+    object-fit: cover;
+    position: absolute;
+    transition: transform 0.3sease;
 }
+
+/* Định vị từng phần tử riêng biệt (bạn có thể điều chỉnh các giá trị top, left) */
+.event-0 {
+    /* width: 80%; */
+    top: 187vw;
+    left: 18vw;
+    transform: translate(0, 0);
+}
+
+.event-1 {
+    top: 209vw; /* Ví dụ vị trí cho phần tử 2 */
+    left: 12vw;
+    transform: translate(0, 0);
+}
+
+.event-2 {
+    top: 230vw;
+    left: 12vw;
+    transform: translate(0, 0);
+}
+
+.event-3 {
+    top: 256vw;
+    left: 5vw;
+    transform: translate(0, 0);
+}
+
+.event-4 {
+    top: 279vw;
+    left: 12vw;
+    transform: translate(0, 0);
+}
+
+.event-5 {
+    top: 311vw;
+    left: 9vw;
+    transform: translate(0, 0);
+}
+
+/* Scale up khi hover (tùy chọn, để phóng to hơn khi di chuột) */
+.floating-element.event-item:hover {
+    transform: scale(1.2); /* Phóng to 120% khi hover */
+}
+
+/* Media queries để responsive trên các kích thước màn hình */
+
 
 @keyframes float {
     0%, 100% {
@@ -51,13 +124,14 @@ body {
         transform: scale(1);
     }
     50% {
-        transform: scale(1.1); /* Phóng to nhẹ */
+        transform: scale(1.5); /* Phóng to nhẹ (giữ nguyên như yêu cầu của bạn) */
     }
     100% {
         transform: scale(1);
     }
 }
 
+/* Pop-up (nội dung bên trong #popup) */
 #popup {
     position: fixed;
     top: 50%;
@@ -74,6 +148,45 @@ body {
     max-width: 400px;
     max-height: 80vh;
     overflow-y: auto; /* Cho phép cuộn dọc nếu nội dung vượt quá */
+}
+
+#popup h2 {
+    font-family: 'PlusJakartaSans', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    font-style: normal;
+    color: #ff69b4;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#popup p {
+    font-family: 'PlusJakartaSans', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    font-style: normal;
+    color: #333333;
+    line-height: 1.6;
+    text-align: left;
+}
+
+#popup button {
+    font-family: 'PlusJakartaSans', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    font-style: normal;
+    color: #ffffff;
+    background-color: #ff69b4;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto 0; /* Căn giữa nút */
+}
+
+#popup button:hover {
+    background-color: #e64d9b; /* Màu hồng nhạt hơn khi hover */
 }
 
 #popup.active {

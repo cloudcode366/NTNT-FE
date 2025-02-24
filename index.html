@@ -3,20 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brochure với Hiệu ứng Lơ Lửng, Pop-up, Cuộn, và Placeholder Scale Theo Ảnh</title>
+    <title>Brochure với 6 Hiệu ứng Lơ Lửng, Pop-up, Cuộn, và Placeholder Scale Theo Ảnh</title>
     <link rel="stylesheet" href="styles.css"> <!-- Liên kết file CSS -->
 </head>
 <body>
     <div class="container">
         <h2>Workshop "Trẻ Truyền Trẻ"</h2>
-        <img src="./apps-arduino.ico" class="floating-element event-item" alt="Âm sắc cổ" onclick="showPopup()"> <!-- Thay đường dẫn ảnh của bạn -->
+        <!-- 6 phần tử ảnh với vị trí và nội dung pop-up riêng -->
+        <img src="./element/t0.png" class="floating-element event-item event-0" alt="Âm sắc cổ 1" onclick="showPopup(0)">
+        <img src="./element/t1.png" class="floating-element event-item event-1" alt="Âm sắc cổ 2" onclick="showPopup(1)">
+        <img src="./element/t2.png" class="floating-element event-item event-2" alt="Âm sắc cổ 3" onclick="showPopup(2)">
+        <img src="./element/t3.png" class="floating-element event-item event-3" alt="Âm sắc cổ 4" onclick="showPopup(3)">
+        <img src="./element/t4.png" class="floating-element event-item event-4" alt="Âm sắc cổ 5" onclick="showPopup(4)">
+        <img src="./element/t5.png" class="floating-element event-item event-5" alt="Âm sắc cổ 6" onclick="showPopup(5)">
         <!-- Phần tử placeholder để kích hoạt cuộn, chiều cao sẽ được JavaScript điều chỉnh -->
         <div class="scroll-placeholder"></div>
     </div>
 
+    <!-- Pop-up chung, nội dung sẽ thay đổi theo phần tử được click -->
     <div id="popup">
         <h2>Thông tin chi tiết</h2>
-        <p>Đây là hoạt động Âm sắc cổ trong workshop "Trẻ Truyền Trẻ". Tham gia để trải nghiệm âm nhạc truyền thống Việt Nam! Đây là hoạt động Âm sắc cổ trong workshop "Trẻ Truyền Trẻ". Tham gia để trải nghiệm âm nhạc truyền thống Việt Nam! Đây là hoạt động Âm sắc cổ trong workshop "Trẻ Truyền Trẻ". Tham gia để trải nghiệm âm nhạc truyền thống Việt Nam! Đây là hoạt động Âm sắc cổ trong workshop "Trẻ Truyền Trẻ". Tham gia để trải nghiệm âm nhạc truyền thống Việt Nam! Đây là hoạt động Âm sắc cổ trong workshop "Trẻ Truyền Trẻ". Tham gia để trải nghiệm âm nhạc truyền thống Việt Nam!</p>
+        <p id="popup-content">Nội dung mặc định sẽ được thay thế.</p>
         <button onclick="closePopup()">Đóng</button>
     </div>
 

@@ -1,9 +1,27 @@
 // Hiệu ứng pop-up khi click
-function showPopup() {
+
+function showPopup(index) {
     const popup = document.getElementById('popup');
     popup.classList.remove('inactive');
     popup.classList.add('active');
+
+    // Di chuyển phần tử chuyển động đến vị trí của phần tử được click
+    moveElementTo(index);
 }
+
+function moveElementTo(index) {
+    const element = document.querySelector(`.event-item.event-${index}`);
+    const movingElement = document.getElementById('moving-element');
+
+    const rect = element.getBoundingClientRect();
+    const containerRect = document.querySelector('.container').getBoundingClientRect();
+
+    const top = rect.top - containerRect.top;
+    const left = rect.left - containerRect.left;
+
+    movingElement.style.transform = `translate(${left}px, ${top}px)`;
+}
+
 
 function closePopup() {
     const popup = document.getElementById('popup');

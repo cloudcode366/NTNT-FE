@@ -53,7 +53,7 @@ h2 {
 
 /* Điều chỉnh cho từng ảnh, làm responsive và định vị độc lập */
 .floating-element.event-item {
-    width: 80%;
+    width:68%;
     height: auto;
     object-fit: cover;
     position: absolute;
@@ -63,38 +63,38 @@ h2 {
 /* Định vị từng phần tử riêng biệt (bạn có thể điều chỉnh các giá trị top, left) */
 .event-0 {
     /* width: 80%; */
-    top: 187vw;
-    left: 18vw;
+    top: 50%;
+    left: 23%;
     transform: translate(0, 0);
 }
 
 .event-1 {
-    top: 209vw; /* Ví dụ vị trí cho phần tử 2 */
-    left: 12vw;
+    top: 56%; /* Ví dụ vị trí cho phần tử 2 */
+    left: 18%;
     transform: translate(0, 0);
 }
 
 .event-2 {
-    top: 230vw;
-    left: 12vw;
+    top: 62%;
+    left: 18%;
     transform: translate(0, 0);
 }
 
 .event-3 {
-    top: 256vw;
-    left: 5vw;
+    top: 69%;
+    left: 12%;
     transform: translate(0, 0);
 }
 
 .event-4 {
-    top: 279vw;
-    left: 12vw;
+    top: 75%;
+    left: 18%;
     transform: translate(0, 0);
 }
 
 .event-5 {
-    top: 311vw;
-    left: 9vw;
+    top: 84%;
+    left: 15%;
     transform: translate(0, 0);
 }
 
@@ -104,6 +104,17 @@ h2 {
 }
 
 /* Media queries để responsive trên các kích thước màn hình */
+#moving-element {
+    width: 100px; /* Điều chỉnh kích thước theo ý muốn */
+    height: 100px; /* Điều chỉnh kích thước theo ý muốn */
+    background-image: url('./element/your-image.png'); /* Thay bằng đường dẫn ảnh của bạn */
+    background-size: cover; /* Đảm bảo ảnh phủ kín phần tử */
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 1s ease-in-out;
+}
 
 
 @keyframes float {

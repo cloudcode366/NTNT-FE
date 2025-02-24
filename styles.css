@@ -17,7 +17,7 @@ body {
     font-family: 'PlusJakartaSans', sans-serif;
     margin: 0;
     min-height: 100vh; /* Đảm bảo chiều cao tối thiểu, cho phép cuộn */
-    background-image: url('./element/bc.jpg'); /* Thay bằng đường dẫn ảnh của bạn */
+    background-image: url('./element/b.png'); /* Thay bằng đường dẫn ảnh của bạn */
     background-size: cover; /* Giữ tỷ lệ ảnh, scale theo chiều rộng viewport */
     background-position: top center;
     background-repeat: no-repeat;
@@ -54,7 +54,6 @@ h2 {
 
 /* Điều chỉnh cho từng ảnh, làm responsive và định vị độc lập */
 .floating-element.event-item {
-    width:80%;
     height: auto;
     object-fit: cover;
     position: absolute;
@@ -64,38 +63,57 @@ h2 {
 /* Định vị từng phần tử riêng biệt (bạn có thể điều chỉnh các giá trị top, left) */
 .event-0 {
     /* width: 80%; */
+    width:80%;
+
     top: 49.9%;
     left: 17.8%;
     transform: translate(0, 0);
 }
 
 .event-1 {
+    width:80%;
+
     top: 56%; /* Ví dụ vị trí cho phần tử 2 */
     left: 12.8%;
     transform: translate(0, 0);
 }
 
 .event-2 {
+    width:80%;
+
     top: 62%;
     left: 12%;
     transform: translate(0, 0);
 }
 
 .event-3 {
+    width:80%;
+
     top: 68.5%;
     left: 5%;
     transform: translate(0, 0);
 }
 
 .event-4 {
+    width:80%;
+
     top: 75.3%;
     left: 11.8%;
     transform: translate(0, 0);
 }
 
 .event-5 {
+    width:80%;
+
     top: 83.5%;
     left: 8.6%;
+    transform: translate(0, 0);
+}
+.event-6 {
+    width:19%;
+
+    top: 91%;
+    left: 42.2%;
     transform: translate(0, 0);
 }
 
@@ -108,7 +126,7 @@ h2 {
 #moving-element {
     width: 100px; /* Điều chỉnh kích thước theo ý muốn */
     height: 100px; /* Điều chỉnh kích thước theo ý muốn */
-    background-image: url('./element/GRASS.png'); /* Thay bằng đường dẫn ảnh của bạn */
+    background-image: url('./element/Layer\ 10.png'); /* Thay bằng đường dẫn ảnh của bạn */
     background-size: cover; /* Đảm bảo ảnh phủ kín phần tử */
     background-position: center;
     position: absolute;

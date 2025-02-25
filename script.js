@@ -49,20 +49,20 @@ function moveElementTo(index) {
         top = 250;
     }
     else if(index == 2){
-        top = 600;
+        top = 450;
 
     }
     else if(index == 3){
-        top = 1000;
+        top = 650;
     }
     else if(index == 4){
-        top = 1500;
+        top = 900;
     }
     else if(index == 5){
-        top = 2000;
+        top = 1200;
     }
     else if(index == 6){
-        top = 2300;
+        top = 1500;
     }
     movingElement.style.transform = `translateY(${top}%)`;
 }

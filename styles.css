@@ -133,14 +133,14 @@ h2 {
 }
 /* Media queries để responsive trên các kích thước màn hình */
 #moving-element {
-    width: 25px; /* Điều chỉnh kích thước theo ý muốn */
-    height: 25px; /* Điều chỉnh kích thước theo ý muốn */
-    background-image: url('./element/Layer\ 10.png'); /* Thay bằng đường dẫn ảnh của bạn */
+    width: 40px; /* Điều chỉnh kích thước theo ý muốn */
+    height: 40px; /* Điều chỉnh kích thước theo ý muốn */
+    background-image: url('./element/mang.png'); /* Thay bằng đường dẫn ảnh của bạn */
     background-size: cover; /* Đảm bảo ảnh phủ kín phần tử */
     background-position: center;
     position: absolute;
-    top: 52%;
-    left: 49%;
+    top: 50%;
+    left: 47%;
     transition: transform 1s ease-in-out;
 }
 

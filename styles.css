@@ -121,7 +121,16 @@ h2 {
 .floating-element.event-item:hover {
     transform: scale(1.2); /* Phóng to 120% khi hover */
 }
-
+.overlay {
+    position: absolute;
+    top: 94%;
+    left: 4%;
+    width: 20%;
+    height: 5%;
+    background-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+    z-index: 10;
+}
 /* Media queries để responsive trên các kích thước màn hình */
 #moving-element {
     width: 25px; /* Điều chỉnh kích thước theo ý muốn */

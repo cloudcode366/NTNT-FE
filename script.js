@@ -15,11 +15,28 @@ function moveElementTo(index) {
 
     const rect = element.getBoundingClientRect();
     const containerRect = document.querySelector('.container').getBoundingClientRect();
+    var top;
+    // Chỉ điều chỉnh vị trí theo trục Y
+    if(index === 1) {
+        top = 250;
+    }
+    else if(index == 2){
+        top = 600;
 
-    const top = rect.top - containerRect.top;
-    const left = rect.left - containerRect.left;
-
-    movingElement.style.transform = `translate(${left}px, ${top}px)`;
+    }
+    else if(index == 3){
+        top = 1000;
+    }
+    else if(index == 4){
+        top = 1500;
+    }
+    else if(index == 5){
+        top = 2000;
+    }
+    else if(index == 6){
+        top = 2300;
+    }
+    movingElement.style.transform = `translateY(${top}%)`;
 }
 
 

@@ -1,10 +1,87 @@
 // Hiệu ứng pop-up khi click
 
+// Kiểm tra cookie khi tải trang
+window.onload = function() {
+    function updatePlaceholderHeight() {
+        // Lấy chiều rộng của viewport
+        const viewportWidth = window.innerWidth;
+        // Tỷ lệ chiều cao/chiều rộng của ảnh (4000/1080)
+        const aspectRatio = 4000 / 1080; // Tỷ lệ chiều cao trên chiều rộng (đã chỉnh theo yêu cầu của bạn)
+        // Tính chiều cao dựa trên chiều rộng viewport và tỷ lệ ảnh
+        const calculatedHeight = viewportWidth * aspectRatio;
+
+        // Đặt chiều cao của .scroll-placeholder
+        const placeholder = document.querySelector('.scroll-placeholder');
+        placeholder.style.height = `${calculatedHeight}px`;
+    }
+
+    // Gọi hàm khi trang tải
+    updatePlaceholderHeight();
+
+    // Cập nhật chiều cao khi resize window
+    window.addEventListener('resize', updatePlaceholderHeight);
+
+    // Kiểm tra cookie và tạo người dùng nếu cần
+    checkAndCreateUser();
+};
+
+function checkAndCreateUser() {
+    const userId = getCookie('userId');
+    if (!userId) {
+        // Gọi API để tạo người dùng
+        fetch('https://ntnt-be.onrender.com/api/v1/user/create/user', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Lưu ID vào cookie
+            setCookie('userId', data, 365);
+            console.log(data);
+        })
+        .catch(error => console.error('Error:', error));
+    }
+}
+
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
+function setCookie(name, value, days) {
+    const d = new Date();
+    d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+    const expires = `expires=${d.toUTCString()}`;
+    document.cookie = `${name}=${value};${expires};path=/`;
+}
+var point = 0;
 function showPopup(index) {
     const popup = document.getElementById('popup');
     const popupTitle = document.getElementById('popup-title');
     const popupContent = document.getElementById('popup-content');
 
+    const userId1 = getCookie('userId');
+    console.log(userId1);
+    var point1 =0;
+    if (userId1) {
+        fetch('https://ntnt-be.onrender.com/api/v1/user/get/point/'+userId1, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            // body: JSON.stringify({ userId: userId, eventIndex: index })
+        })
+        .then(response => response.json())
+        .then(data => {
+            // console.log('Point added:', data);
+            point = data;
+            console.log(point1);
+        })
+        .catch(error => console.error('Error:', error));
+    }
     // Nội dung cho từng phần tử
     const titles = [
         "Vào lớp",
@@ -27,7 +104,7 @@ function showPopup(index) {
     ];
 
     // Thay đổi nội dung của pop-up
-    popupTitle.textContent = titles[index];
+    popupTitle.textContent = titles[index]+" -Bạn đang có:"+point+" điểm";
     popupContent.textContent = contents[index];
 
     popup.classList.remove('inactive');
@@ -35,6 +112,22 @@ function showPopup(index) {
 
     // Di chuyển phần tử chuyển động đến vị trí của phần tử được click
     moveElementTo(index);
+
+    const userId = getCookie('userId');
+    if (userId) {
+        fetch('https://ntnt-be.onrender.com/api/v1/user/set/point/'+userId+'/'+index, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            // body: JSON.stringify({ userId: userId, eventIndex: index })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Point added:', data);
+        })
+        .catch(error => console.error('Error:', error));
+    }
 }
 
 function moveElementTo(index) {
@@ -78,23 +171,23 @@ function closePopup() {
 }
 
 // Tính toán và điều chỉnh chiều cao của .scroll-placeholder dựa trên tỷ lệ ảnh 1080x4000
-window.onload = function() {
-    function updatePlaceholderHeight() {
-        // Lấy chiều rộng của viewport
-        const viewportWidth = window.innerWidth;
-        // Tỷ lệ chiều cao/chiều rộng của ảnh (4000/1080)
-        const aspectRatio = 4000 / 1080; // Tỷ lệ chiều cao trên chiều rộng (đã chỉnh theo yêu cầu của bạn)
-        // Tính chiều cao dựa trên chiều rộng viewport và tỷ lệ ảnh
-        const calculatedHeight = viewportWidth * aspectRatio;
+// window.onload = function() {
+//     function updatePlaceholderHeight() {
+//         // Lấy chiều rộng của viewport
+//         const viewportWidth = window.innerWidth;
+//         // Tỷ lệ chiều cao/chiều rộng của ảnh (4000/1080)
+//         const aspectRatio = 4000 / 1080; // Tỷ lệ chiều cao trên chiều rộng (đã chỉnh theo yêu cầu của bạn)
+//         // Tính chiều cao dựa trên chiều rộng viewport và tỷ lệ ảnh
+//         const calculatedHeight = viewportWidth * aspectRatio;
 
-        // Đặt chiều cao của .scroll-placeholder
-        const placeholder = document.querySelector('.scroll-placeholder');
-        placeholder.style.height = `${calculatedHeight}px`;
-    }
+//         // Đặt chiều cao của .scroll-placeholder
+//         const placeholder = document.querySelector('.scroll-placeholder');
+//         placeholder.style.height = `${calculatedHeight}px`;
+//     }
 
-    // Gọi hàm khi trang tải
-    updatePlaceholderHeight();
+//     // Gọi hàm khi trang tải
+//     updatePlaceholderHeight();
 
-    // Cập nhật chiều cao khi resize window
-    window.addEventListener('resize', updatePlaceholderHeight);
-};
+//     // Cập nhật chiều cao khi resize window
+//     window.addEventListener('resize', updatePlaceholderHeight);
+// };
